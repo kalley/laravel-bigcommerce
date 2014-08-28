@@ -50,9 +50,10 @@ class LaravelBigcommerceServiceProvider extends ServiceProvider {
 	}
 
 	public function registerCommands() {
-  	$this->app->bind('command.laravel-bigcommerce.migration', function ($app) {
+  	$this->app->bindShared('command.bigcommerce.migration', function ($app) {
       return new MigrationCommand($app);
     });
+    $this->commands('command.bigcommerce.migration');
 	}
 
 	/**

@@ -12,6 +12,7 @@
 namespace Kalley\LaravelBigcommerce\Console;
 
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputOption;
 
 class MigrationCommand extends Command
 {
