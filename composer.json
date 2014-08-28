@@ -1,0 +1,26 @@
+{
+    "name": "kalley/laravel-bigcommerce",
+    "description": "Laravel package for Big Commerce PHP API",
+    "keywords": ["laravel","illuminate","bigcommerce"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kalley",
+            "email": "kalley.powell@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "bigcommerce/api": "2.0.x"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Kalley\\LaravelBigcommerce\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
