@@ -79,7 +79,7 @@ class MigrationCommand extends Command
             $this->info("Creating migration...");
             // Generate
             $filename = 'database/migrations/'.
-                date('Y_m_d_His')."_confide_setup_users_table.php";
+                date('Y_m_d_His')."_add_bigcommerce_to_users_table.php";
             $output = $this->app['view']->make('laravel-bigcommerce::generators.migration', $viewVars)
               ->render();
             $filename = $this->app['path'].'/'.trim($filename,'/');

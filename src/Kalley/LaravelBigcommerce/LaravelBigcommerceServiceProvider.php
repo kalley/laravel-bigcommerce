@@ -46,7 +46,7 @@ class LaravelBigcommerceServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->registerCommands();
 	}
 
 	public function registerCommands() {
