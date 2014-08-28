@@ -30,6 +30,23 @@ class MigrationCommand extends Command
      */
     protected $description = 'Create the migrations needed for Bigcommerce';
 
+    public $app;
+
+    /**
+     * Create a new command instance.
+     *
+     * @param \Illuminate\Foundation\Application $app Laravel application object
+     *
+     * @return void
+     */
+    public function __construct($app = null)
+    {
+      if (!is_array($app))
+        parent::__construct();
+
+      $this->app = $app ?: app();
+    }
+
     /**
      * Get the console command options.
      *
@@ -43,23 +60,12 @@ class MigrationCommand extends Command
     }
 
     /**
-     * Create a new reminder table command instance.
-     *
-     * @return \LucaDegasperi\OAuth2Server\Console\MigrationsCommand
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return void
      */
     public function fire()
     {
-        $app = app();
         // Prepare variables
         $table = lcfirst($this->option('table'));
 
@@ -71,7 +77,7 @@ class MigrationCommand extends Command
         $this->line('');
         $this->info("Table name: $table");
         $this->comment(
-            "A migration that creates the $table table will".
+            "A migration that adds bigcommerce_id to the $table table will".
             " be created in app/database/migrations directory"
         );
         $this->line('');
