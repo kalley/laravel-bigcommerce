@@ -59,7 +59,39 @@ This will create an address in the customer's address book in your store. Requir
 *   `city`
 *   `state`
 *   `zip`
-*   `country`
+*   `country` - this needs to match exactly what Bigcommerce is expecting. See below.
+
+```php
+Bigcommerce::getCountries($filter=false, $force=false);
+```
+
+This will give you a list of countries Bigcommerce supports or whatever. Caches it for you so you don't use up your API limit.
+
+Returns an array of \Bigcommerce\Api\Resources\Resource
+
+```php
+Bigcommerce::getCountry($id);
+```
+
+If, for whatever reason, you want information on a single country.
+
+Returns an instance of \Bigcommerce\Api\Resources\Resource
+
+```php
+Bigcommerce::getCountryStates($country_id, $filter=false, $force=false);
+```
+
+Get states/provinces for the requested country. Caches it for you so you don't use up your API limit.
+
+Returns an array of \Bigcommerce\Api\Resources\Resource
+
+```php
+Bigcommerce::getCountryState($country_id, $id);
+```
+
+If, for whatever reason, you want information on a single state.
+
+Returns an instance of \Bigcommerce\Api\Resources\Resource
 
 ## Support
 
