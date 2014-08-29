@@ -19,14 +19,14 @@ Add this line of code to the ```providers``` array located in your ```app/config
 
 And this lines to the ```aliases``` array:
 ```php
-'Bigcommerce' => 'Bigcommerce\Api\Client',
+'Bigcommerce' => 'Kalley\LaravelBigcommerce\Client',
 ```
 
 ### Configuration
 
 In order to use the Bigcommerce API, publish its configuration first
 
-```
+```php
 php artisan config:publish kalley/laravel-bigcommerce
 ```
 
@@ -36,11 +36,30 @@ Afterwards edit the file ```app/config/packages/kalley/laravel-bigcommerce/bigco
 
 This package comes with all the migrations you need to run a full featured oauth2 server. Run:
 
-```
+```php
 php artisan bigcommerce:migrations
 ```
 
 Then you're ready to go! Look at the [Bigcommerce PHP API](https://github.com/bigcommerce/bigcommerce-api-php) for specifics on how to use the library.
+
+## Extensions
+
+This library extends Bigcommerce\Api\Client with the following methods:
+
+```php
+Bigcommerce::createCustomerAddress($customer_id, $object);
+```
+
+This will create an address in the customer's address book in your store. Required fields are as followed:
+
+*   `first_name`
+*   `last_name`
+*   `phone`
+*   `street_1`
+*   `city`
+*   `state`
+*   `zip`
+*   `country`
 
 ## Support
 
