@@ -50,48 +50,48 @@ This library extends Bigcommerce\Api\Client with the following methods:
 Bigcommerce::createCustomerAddress($customer_id, $object);
 ```
 
-This will create an address in the customer's address book in your store. Required fields are as followed:
+> This will create an address in the customer's address book in your store. Required fields are as followed:
 
-*   `first_name`
-*   `last_name`
-*   `phone`
-*   `street_1`
-*   `city`
-*   `state`
-*   `zip`
-*   `country` - this needs to match exactly what Bigcommerce is expecting. See below.
+> *   `first_name`
+> *   `last_name`
+> *   `phone`
+> *   `street_1`
+> *   `city`
+> *   `state`
+> *   `zip`
+> *   `country` - this needs to match exactly what Bigcommerce is expecting. See below.
 
 ```php
 Bigcommerce::getCountries($filter=false, $force=false);
 ```
 
-This will give you a list of countries Bigcommerce supports or whatever. Caches it for you so you don't use up your API limit.
+> This will give you a list of countries Bigcommerce supports or whatever. Caches it for you so you don't use up your API limit.
 
-Returns an array of \Bigcommerce\Api\Resources\Resource
+> Returns an array of \Bigcommerce\Api\Resource
 
 ```php
 Bigcommerce::getCountry($id);
 ```
 
-If, for whatever reason, you want information on a single country.
+> If, for whatever reason, you want information on a single country.
 
-Returns an instance of \Bigcommerce\Api\Resources\Resource
+> Returns an instance of \Bigcommerce\Api\Resource
 
 ```php
 Bigcommerce::getCountryStates($country_id, $filter=false, $force=false);
 ```
 
-Get states/provinces for the requested country. Caches it for you so you don't use up your API limit.
+> Get states/provinces for the requested country. Caches it for you so you don't use up your API limit.
 
-Returns an array of \Bigcommerce\Api\Resources\Resource
+> Returns an array of \Bigcommerce\Api\Resource
 
 ```php
 Bigcommerce::getCountryState($country_id, $id);
 ```
 
-If, for whatever reason, you want information on a single state.
+> If, for whatever reason, you want information on a single state.
 
-Returns an instance of \Bigcommerce\Api\Resources\Resource
+> Returns an instance of \Bigcommerce\Api\Resource
 
 ## Support
 
