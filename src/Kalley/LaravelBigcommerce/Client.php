@@ -9,8 +9,9 @@ class Client extends Bigcommerce {
   protected static function getCachedCollection($endpoint, $force) {
     $cacheKey = 'bigcommerce' . str_replace('/', '.', $endpoint);
     $cached = $force ? false : Cache::get($cacheKey);
-    if ( ! $cached ) {
+    if ( $cached === null ) {
       $cached = self::getCollection($endpoint);
+      if ( $cached === null ) $cached = false;
       Cache::forever($cacheKey, $cached);
     }
     return $cached;
