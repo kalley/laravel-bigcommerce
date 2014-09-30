@@ -43,11 +43,12 @@ class Client {
   public static function __callStatic($method, $args) {
     $cacheMinutes = Config::get('laravel-bigcommerce::bigcommerce.cache');
     $force = false;
-    if ( $cacheMinutes ) {
+    $creating = strpos($method, 'create') === 0;
+    if ( $cacheMinutes && ! $creating ) {
       if ( count($args) && is_bool($args[count($args) - 1]) ) {
         $force = array_pop($args);
       }
-      $cacheKey = 'bigcommerce' . $method . implode(':', $args);
+      $cacheKey = 'bigcommerce' . $method . ( count($args) ? '_' . $args[0] : '' );
       $cached = $force ? null : Cache::get($cacheKey);
     } else {
       $force = true;
@@ -62,7 +63,7 @@ class Client {
         default: $cached = forward_static_call_array(array('Bigcommerce', $method), $args);
       }
       if ( $cached === null ) $cached = false;
-      if ( $cacheMinutes ) {
+      if ( $cacheMinutes && ! $creating ) {
         if ( is_numeric($cacheMinutes) ) {
           Cache::put($cacheKey, $cached, $cacheMinutes);
         } elseif ( $cacheMinutes === 'forever' ) {
