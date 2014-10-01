@@ -48,7 +48,7 @@ class Client {
       if ( count($args) && is_bool($args[count($args) - 1]) ) {
         $force = array_pop($args);
       }
-      $cacheKey = 'bigcommerce' . $method . ( count($args) ? '_' . $args[0] : '' );
+      $cacheKey = 'bigcommerce' . $method . http_build_query($args);
       $cached = $force ? null : Cache::get($cacheKey);
     } else {
       $force = true;
