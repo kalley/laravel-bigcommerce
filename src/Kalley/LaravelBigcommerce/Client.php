@@ -64,7 +64,12 @@ class Client {
         default: $cached = forward_static_call_array(array('Bigcommerce', $method), $args);
       }
       if ( $cached === null ) $cached = false;
-      if ( $cacheMinutes && $getting && $cached instanceof Resource ) {
+      if ( $cacheMinutes &&
+           $getting &&
+           ( $cached instanceof Resource ||
+             ( is_array($cached) && count($cached) && $cached[0] instanceof Resource )
+           )
+         ) {
         if ( is_numeric($cacheMinutes) ) {
           Cache::put($cacheKey, $cached, $cacheMinutes);
         } elseif ( $cacheMinutes === 'forever' ) {
