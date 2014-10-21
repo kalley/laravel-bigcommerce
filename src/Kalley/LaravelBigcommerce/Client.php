@@ -2,6 +2,7 @@
 
 use Bigcommerce\Api\Client as Bigcommerce;
 use Bigcommerce\Api\Filter;
+use Bigcommerce\Api\Resource;
 use Cache;
 use Config;
 
@@ -63,7 +64,7 @@ class Client {
         default: $cached = forward_static_call_array(array('Bigcommerce', $method), $args);
       }
       if ( $cached === null ) $cached = false;
-      if ( $cacheMinutes && $getting ) {
+      if ( $cacheMinutes && $getting && $cached instanceof Resource ) {
         if ( is_numeric($cacheMinutes) ) {
           Cache::put($cacheKey, $cached, $cacheMinutes);
         } elseif ( $cacheMinutes === 'forever' ) {
