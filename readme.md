@@ -44,7 +44,7 @@ Then you're ready to go! Look at the [Bigcommerce PHP API](https://github.com/bi
 
 #### Caching
 
-This library will cache the results of any of the API calls if you configure it to. This will always cache the results of the added methods unless you pass `false` as the final argument.
+This library will cache the results of any GET API calls if you configure it to. This will always cache the results of the added methods unless you pass `false` as the final argument.
 
 The `cache` configuration option accepts an integer representing minutes (eg. `10`); `false`, `null`, `0` to not cache; or `'forever'` to cache forever. Any other value will be treated as a sign to not cache the result. As with the added methods below, you can pass a boolean as the final argument to force it to cache again if you wish.
 
