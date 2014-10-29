@@ -13,8 +13,9 @@ class Client {
     $cached = $force ? null : Cache::get($cacheKey);
     if ( $cached === null ) {
       $cached = Bigcommerce::getCollection($endpoint);
-      if ( $cached === null ) $cached = false;
-      Cache::forever($cacheKey, $cached);
+      if ( $cached !== null ) {
+        Cache::forever($cacheKey, $cached);
+      }
     }
     return $cached;
   }
