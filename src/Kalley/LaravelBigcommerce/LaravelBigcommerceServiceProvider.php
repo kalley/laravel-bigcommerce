@@ -35,7 +35,6 @@ class LaravelBigcommerceServiceProvider extends ServiceProvider {
       'username' => $username,
       'api_key' => $api_key,
     ]);
-    Bigcommerce::setCipher('RC4-SHA');
   }
 
   /**
